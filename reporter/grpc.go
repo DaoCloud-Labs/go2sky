@@ -29,11 +29,11 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/connectivity"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/internal/tool"
-	"github.com/SkyAPM/go2sky/reporter/grpc/common"
-	v2 "github.com/SkyAPM/go2sky/reporter/grpc/language-agent-v2"
-	"github.com/SkyAPM/go2sky/reporter/grpc/register"
+	"github.com/DaoCloud-Labs/go2sky"
+	"github.com/DaoCloud-Labs/go2sky/internal/tool"
+	"github.com/DaoCloud-Labs/go2sky/reporter/grpc/common"
+	v2 "github.com/DaoCloud-Labs/go2sky/reporter/grpc/language-agent-v2"
+	"github.com/DaoCloud-Labs/go2sky/reporter/grpc/register"
 )
 
 const (

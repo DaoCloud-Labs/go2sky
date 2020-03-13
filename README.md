@@ -6,9 +6,13 @@
 
 **GO2Sky** is an instrument SDK library, written in Go, by following [Apache SkyWalking](https://github.com/apache/incubator-skywalking) tracing and metrics formats.
 
+**NOTE**: This repo provided by DaoCloud Labs, and used for DaoCloud DMP only.
+
+protocol refs  `reporter/grpc` dir and `https://gitlab.daocloud.io/microservice/dmp/skywalking/skywalking-data-collect-protocol.git`.
+
 # Installation
 ```
-$ go get -u github.com/SkyAPM/go2sky
+$ go get -u github.com/DaoCloud-Labs/go2sky
 ```
 
 The API of this project is still evolving. The use of vendoring tool is recommended.
@@ -21,7 +25,7 @@ By completing this quickstart, you will learn how to trace local methods. For mo
 ## Configuration
 
 GO2Sky can export traces to Apache SkyWalking OAP server or local logger. In the following example, we configure GO2Sky to export to OAP server, 
-which is listening on `oap-skywalking` port `11800`, and all of the spans from this program will be associated with a service name `example`.
+which is listening on `oap-skywalking` port `11800`, and all of the spans from this program will be associated with a service name `example` and within `test-env` env.
  
  ```go
 r, err := reporter.NewGRPCReporter("oap-skywalking:11800")
@@ -29,7 +33,7 @@ if err != nil {
     log.Fatalf("new reporter error %v \n", err)
 }
 defer r.Close()
-tracer, err := go2sky.NewTracer("example", go2sky.WithReporter(r))
+tracer, err := go2sky.NewTracer("test-env", "example", go2sky.WithReporter(r))
 ```
 
 ## Create span

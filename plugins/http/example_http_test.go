@@ -26,8 +26,8 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/DaoCloud-Labs/go2sky"
+	"github.com/DaoCloud-Labs/go2sky/reporter"
 )
 
 func ExampleNewServerMiddleware() {
@@ -38,7 +38,7 @@ func ExampleNewServerMiddleware() {
 	}
 	defer r.Close()
 
-	tracer, err := go2sky.NewTracer("example", go2sky.WithReporter(r))
+	tracer, err := go2sky.NewTracer("test-env", "example", go2sky.WithReporter(r))
 	if err != nil {
 		log.Fatalf("create tracer error %v \n", err)
 	}

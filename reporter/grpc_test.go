@@ -28,10 +28,10 @@ import (
 
 	"github.com/golang/mock/gomock"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter/grpc/common"
-	"github.com/SkyAPM/go2sky/reporter/grpc/register"
-	"github.com/SkyAPM/go2sky/reporter/grpc/register/mock_register"
+	"github.com/DaoCloud-Labs/go2sky"
+	"github.com/DaoCloud-Labs/go2sky/reporter/grpc/common"
+	"github.com/DaoCloud-Labs/go2sky/reporter/grpc/register"
+	"github.com/DaoCloud-Labs/go2sky/reporter/grpc/register/mock_register"
 )
 
 const header string = "1-MTU1NTY0NDg4Mjk2Nzg2ODAwMC4wLjU5NDYzNzUyMDYzMzg3NDkwODc=" +
@@ -49,7 +49,7 @@ func Test_gRPCReporter_Register(t *testing.T) {
 func Test_e2e(t *testing.T) {
 	serviceName, _, instance, _, reporter := createMockReporter(t)
 	reporter.sendCh = make(chan *common.UpstreamSegment, 10)
-	tracer, err := go2sky.NewTracer(serviceName, go2sky.WithReporter(reporter), go2sky.WithInstance(instance))
+	tracer, err := go2sky.NewTracer("test-env", serviceName, go2sky.WithReporter(reporter), go2sky.WithInstance(instance))
 	if err != nil {
 		t.Error(err)
 	}

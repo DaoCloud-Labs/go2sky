@@ -23,9 +23,9 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/SkyAPM/go2sky"
-	h "github.com/SkyAPM/go2sky/plugins/http"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/DaoCloud-Labs/go2sky"
+	h "github.com/DaoCloud-Labs/go2sky/plugins/http"
+	"github.com/DaoCloud-Labs/go2sky/reporter"
 	"github.com/gin-gonic/gin"
 )
 
@@ -37,7 +37,7 @@ func ExampleMiddleware() {
 	}
 	defer re.Close()
 
-	tracer, err := go2sky.NewTracer("gin-server", go2sky.WithReporter(re))
+	tracer, err := go2sky.NewTracer("test-env", "gin-server", go2sky.WithReporter(re))
 	if err != nil {
 		log.Fatalf("create tracer error %v \n", err)
 	}

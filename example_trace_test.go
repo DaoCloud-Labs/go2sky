@@ -22,8 +22,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/DaoCloud-Labs/go2sky"
+	"github.com/DaoCloud-Labs/go2sky/reporter"
 )
 
 func ExampleNewTracer() {
@@ -33,7 +33,7 @@ func ExampleNewTracer() {
 		log.Fatalf("new reporter error %v \n", err)
 	}
 	defer r.Close()
-	tracer, err := go2sky.NewTracer("example", go2sky.WithReporter(r))
+	tracer, err := go2sky.NewTracer("test-env", "example", go2sky.WithReporter(r))
 	if err != nil {
 		log.Fatalf("create tracer error %v \n", err)
 	}

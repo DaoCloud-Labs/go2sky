@@ -21,7 +21,7 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "org.apache.skywalking.apm.network.language.agent.v2";
 option csharp_namespace = "SkyWalking.NetworkProtocol";
-option go_package = "github.com/SkyAPM/go2sky/reporter/grpc/language-agent-v2";
+option go_package = "github.com/DaoCloud-Labs/go2sky/reporter/grpc/language-agent-v2";
 
 import "common/common.proto";
 import "common/trace-common.proto";
@@ -32,11 +32,12 @@ service TraceSegmentReportService {
 }
 
 message SegmentObject {
-    UniqueId traceSegmentId = 1;
-    repeated SpanObjectV2 spans = 2;
-    int32 serviceId = 3;
-    int32 serviceInstanceId = 4;
-    bool isSizeLimited = 5;
+    string envCode = 1;
+    UniqueId traceSegmentId = 2;
+    repeated SpanObjectV2 spans = 3;
+    int32 serviceId = 4;
+    int32 serviceInstanceId = 5;
+    bool isSizeLimited = 6;
 }
 
 message SegmentReference {
@@ -70,6 +71,8 @@ message SpanObjectV2 {
     bool isError = 14;
     repeated KeyStringValuePair tags = 15;
     repeated Log logs = 16;
+    int32 serviceId = 17;
+    int32 serviceInstanceId = 18;
 }
 
 message Log {
