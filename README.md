@@ -25,7 +25,7 @@ By completing this quickstart, you will learn how to trace local methods. For mo
 ## Configuration
 
 GO2Sky can export traces to Apache SkyWalking OAP server or local logger. In the following example, we configure GO2Sky to export to OAP server, 
-which is listening on `oap-skywalking` port `11800`, and all of the spans from this program will be associated with a service name `example`.
+which is listening on `oap-skywalking` port `11800`, and all of the spans from this program will be associated with a service name `example` and within `test-env` env.
  
  ```go
 r, err := reporter.NewGRPCReporter("oap-skywalking:11800")
@@ -33,7 +33,7 @@ if err != nil {
     log.Fatalf("new reporter error %v \n", err)
 }
 defer r.Close()
-tracer, err := go2sky.NewTracer("example", go2sky.WithReporter(r))
+tracer, err := go2sky.NewTracer("test-env", "example", go2sky.WithReporter(r))
 ```
 
 ## Create span
