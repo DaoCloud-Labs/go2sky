@@ -31,7 +31,7 @@ const header string = "1-MTU1NTY0NDg4Mjk2Nzg2ODAwMC4wLjU5NDYzNzUyMDYzMzg3NDkwODc
 func TestTracer_EntryAndExit(t *testing.T) {
 	wg := &sync.WaitGroup{}
 	wg.Add(2)
-	tracer, err := NewTracer("service", WithReporter(&NoopReporter{wg: wg}))
+	tracer, err := NewTracer("test-env", "service", WithReporter(&NoopReporter{wg: wg}))
 	if err != nil {
 		t.Error(err)
 	}
@@ -63,7 +63,7 @@ func TestTracer_Entry(t *testing.T) {
 	wg := &sync.WaitGroup{}
 	wg.Add(1)
 	reporter := &NoopReporter{wg: wg}
-	tracer, err := NewTracer("service", WithReporter(reporter))
+	tracer, err := NewTracer("test-env", "service", WithReporter(reporter))
 	if err != nil {
 		t.Error(err)
 	}
@@ -89,7 +89,7 @@ func TestTracer_Entry(t *testing.T) {
 func TestTracer_EntryAndExitInTrace(t *testing.T) {
 	wg := &sync.WaitGroup{}
 	wg.Add(2)
-	tracer, err := NewTracer("service", WithReporter(&NoopReporter{wg: wg}))
+	tracer, err := NewTracer("test-env", "service", WithReporter(&NoopReporter{wg: wg}))
 	if err != nil {
 		t.Error(err)
 	}

@@ -38,7 +38,7 @@ func ExampleNewServerMiddleware() {
 	}
 	defer r.Close()
 
-	tracer, err := go2sky.NewTracer("example", go2sky.WithReporter(r))
+	tracer, err := go2sky.NewTracer("test-env", "example", go2sky.WithReporter(r))
 	if err != nil {
 		log.Fatalf("create tracer error %v \n", err)
 	}

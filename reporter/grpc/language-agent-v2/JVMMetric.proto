@@ -33,6 +33,7 @@ service JVMMetricReportService {
 }
 
 message JVMMetricCollection {
-    repeated JVMMetric metrics = 1;
-    int32 serviceInstanceId = 2;
+    string envCode = 1;
+    repeated JVMMetric metrics = 2;
+    int32 serviceInstanceId = 3;
 }

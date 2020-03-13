@@ -24,8 +24,9 @@ option csharp_namespace = "SkyWalking.NetworkProtocol";
 option go_package = "github.com/DaoCloud-Labs/go2sky/reporter/grpc/common";
 
 message UpstreamSegment {
-    repeated UniqueId globalTraceIds = 1;
-    bytes segment = 2; // the byte array of TraceSegmentObject
+    string envCode = 1;
+    repeated UniqueId globalTraceIds = 2;
+    bytes segment = 3; // the byte array of TraceSegmentObject
 }
 
 enum SpanType {

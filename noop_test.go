@@ -29,7 +29,7 @@ import (
 type createFunc func() (Span, context.Context, error)
 
 func TestCreateNoopSpan(t *testing.T) {
-	tracer, _ := NewTracer("noop")
+	tracer, _ := NewTracer("test-env", "noop")
 	tests := []struct {
 		name string
 		n    createFunc
@@ -74,7 +74,7 @@ func TestNoopSpanFromBegin(t *testing.T) {
 	r := &registerReporter{
 		wg: wg,
 	}
-	tracer, _ := NewTracer("service", WithReporter(r))
+	tracer, _ := NewTracer("test-env", "service", WithReporter(r))
 	span, ctx, _ := tracer.CreateEntrySpan(context.Background(), "entry", func() (s string, e error) {
 		return "", nil
 	})

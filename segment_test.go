@@ -30,7 +30,7 @@ func TestSyncSegment(t *testing.T) {
 	mr := MockReporter{
 		WaitGroup: wg,
 	}
-	tracer, _ := NewTracer("segmentTest", WithReporter(&mr))
+	tracer, _ := NewTracer("test-env", "segmentTest", WithReporter(&mr))
 	tracer.WaitUntilRegister()
 	ctx := context.Background()
 	span, ctx, _ := tracer.CreateEntrySpan(ctx, "entry", MockExtractor)
@@ -51,7 +51,7 @@ func TestAsyncSingleSegment(t *testing.T) {
 	mr := MockReporter{
 		WaitGroup: reportWg,
 	}
-	tracer, _ := NewTracer("segmentTest", WithReporter(&mr))
+	tracer, _ := NewTracer("test-env", "segmentTest", WithReporter(&mr))
 	tracer.WaitUntilRegister()
 	ctx := context.Background()
 	span, ctx, _ := tracer.CreateEntrySpan(ctx, "entry", MockExtractor)
@@ -79,7 +79,7 @@ func TestAsyncMultipleSegments(t *testing.T) {
 	mr := MockReporter{
 		WaitGroup: reportWg,
 	}
-	tracer, _ := NewTracer("segmentTest", WithReporter(&mr))
+	tracer, _ := NewTracer("test-env", "segmentTest", WithReporter(&mr))
 	tracer.WaitUntilRegister()
 	ctx := context.Background()
 	span, ctx, _ := tracer.CreateEntrySpan(ctx, "entry", MockExtractor)

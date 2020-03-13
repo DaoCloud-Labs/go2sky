@@ -26,11 +26,12 @@ option go_package = "github.com/DaoCloud-Labs/go2sky/reporter/grpc/common";
 import "common/common.proto";
 
 message JVMMetric {
-    int64 time = 1;
-    CPU cpu = 2;
-    repeated Memory memory = 3;
-    repeated MemoryPool memoryPool = 4;
-    repeated GC gc = 5;
+    string envCode = 1;
+    int64 time = 2;
+    CPU cpu = 3;
+    repeated Memory memory = 4;
+    repeated MemoryPool memoryPool = 5;
+    repeated GC gc = 6;
 }
 
 message Memory {

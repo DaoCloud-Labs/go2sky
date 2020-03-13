@@ -33,7 +33,7 @@ var (
 )
 
 func TestTracerInit(t *testing.T) {
-	_, err := NewTracer("service", WithReporter(&mockRegisterReporter{
+	_, err := NewTracer("test-env", "service", WithReporter(&mockRegisterReporter{
 		success: true,
 	}))
 	if err != nil {
@@ -45,7 +45,7 @@ func TestTracer_CreateLocalSpan(t *testing.T) {
 	reporter := &mockRegisterReporter{
 		success: true,
 	}
-	tracer, _ := NewTracer("service", WithReporter(reporter))
+	tracer, _ := NewTracer("test-env", "service", WithReporter(reporter))
 	tracer.WaitUntilRegister()
 	span, ctx, err := tracer.CreateLocalSpan(context.Background())
 	if err != nil {
@@ -65,7 +65,7 @@ func TestTracer_CreateLocalSpanAsync(t *testing.T) {
 	reporter := &mockRegisterReporter{
 		success: true,
 	}
-	tracer, _ := NewTracer("service", WithReporter(reporter))
+	tracer, _ := NewTracer("test-env", "service", WithReporter(reporter))
 	tracer.WaitUntilRegister()
 	span, ctx, err := tracer.CreateLocalSpan(context.Background())
 	if err != nil {
@@ -116,7 +116,7 @@ func TestTrace_TraceID(t *testing.T) {
 	reporter := &mockRegisterReporter{
 		success: false,
 	}
-	tracer, _ := NewTracer("service", WithReporter(reporter))
+	tracer, _ := NewTracer("test-env", "service", WithReporter(reporter))
 	_, ctx, err := tracer.CreateLocalSpan(context.Background())
 	if err != nil {
 		t.Error(err)
@@ -128,7 +128,7 @@ func TestTrace_TraceID(t *testing.T) {
 	reporter = &mockRegisterReporter{
 		success: true,
 	}
-	tracer, _ = NewTracer("service", WithReporter(reporter))
+	tracer, _ = NewTracer("test-env", "service", WithReporter(reporter))
 	tracer.WaitUntilRegister()
 	span, ctx, err := tracer.CreateLocalSpan(context.Background())
 	if err != nil {
@@ -173,6 +173,7 @@ func (r *mockRegisterReporter) wait() {
 
 func TestNewTracer(t *testing.T) {
 	type args struct {
+		envCode string
 		service string
 		opts    []TracerOption
 	}
@@ -185,25 +186,27 @@ func TestNewTracer(t *testing.T) {
 		{
 			"null service name",
 			struct {
+				envCode string
 				service string
 				opts    []TracerOption
-			}{service: "", opts: nil},
+			}{envCode: "test-env", service: "", opts: nil},
 			nil,
 			true,
 		},
 		{
 			"without reporter",
 			struct {
+				envCode string
 				service string
 				opts    []TracerOption
-			}{service: "test", opts: nil},
-			&Tracer{service: "test"},
+			}{envCode: "test-env", service: "test", opts: nil},
+			&Tracer{envCode: "test-env", service: "test"},
 			false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gotTracer, err := NewTracer(tt.args.service, tt.args.opts...)
+			gotTracer, err := NewTracer(tt.args.envCode, tt.args.service, tt.args.opts...)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("NewTracer() error = %v, wantErr %v", err, tt.wantErr)
 				return

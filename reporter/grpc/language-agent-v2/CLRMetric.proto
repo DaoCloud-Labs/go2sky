@@ -32,6 +32,7 @@ service CLRMetricReportService {
 }
 
 message CLRMetricCollection {
-    repeated CLRMetric metrics = 1;
-    int32 serviceInstanceId = 2;
+    string envCode = 1;
+    repeated CLRMetric metrics = 2;
+    int32 serviceInstanceId = 3;
 }

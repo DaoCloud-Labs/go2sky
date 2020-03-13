@@ -49,7 +49,7 @@ func Test_gRPCReporter_Register(t *testing.T) {
 func Test_e2e(t *testing.T) {
 	serviceName, _, instance, _, reporter := createMockReporter(t)
 	reporter.sendCh = make(chan *common.UpstreamSegment, 10)
-	tracer, err := go2sky.NewTracer(serviceName, go2sky.WithReporter(reporter), go2sky.WithInstance(instance))
+	tracer, err := go2sky.NewTracer("test-env", serviceName, go2sky.WithReporter(reporter), go2sky.WithInstance(instance))
 	if err != nil {
 		t.Error(err)
 	}

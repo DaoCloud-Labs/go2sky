@@ -40,6 +40,7 @@ const (
 
 // Tracer is go2sky tracer implementation.
 type Tracer struct {
+	envCode  string
 	service  string
 	instance string
 	reporter Reporter
@@ -55,11 +56,12 @@ type Tracer struct {
 type TracerOption func(t *Tracer)
 
 // NewTracer return a new go2sky Tracer
-func NewTracer(service string, opts ...TracerOption) (tracer *Tracer, err error) {
-	if service == "" {
+func NewTracer(envCode string, service string, opts ...TracerOption) (tracer *Tracer, err error) {
+	if (envCode == "") || (service == "") {
 		return nil, errParameter
 	}
 	t := &Tracer{
+		envCode:    envCode,
 		service:    service,
 		initFlag:   0,
 		serviceID:  0,
