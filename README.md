@@ -6,9 +6,13 @@
 
 **GO2Sky** is an instrument SDK library, written in Go, by following [Apache SkyWalking](https://github.com/apache/incubator-skywalking) tracing and metrics formats.
 
+**NOTE**: This repo provided by DaoCloud Labs, and used for DaoCloud DMP only.
+
+protocol refs  `reporter/grpc` dir and `https://gitlab.daocloud.io/microservice/dmp/skywalking/skywalking-data-collect-protocol.git`.
+
 # Installation
 ```
-$ go get -u github.com/SkyAPM/go2sky
+$ go get -u github.com/DaoCloud-Labs/go2sky
 ```
 
 The API of this project is still evolving. The use of vendoring tool is recommended.

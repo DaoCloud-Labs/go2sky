@@ -25,7 +25,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/SkyAPM/go2sky/propagation"
+	"github.com/DaoCloud-Labs/go2sky/propagation"
 )
 
 var (

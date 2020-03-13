@@ -6,8 +6,8 @@ package mock_register
 
 import (
 	context "context"
-	common "github.com/SkyAPM/go2sky/reporter/grpc/common"
-	register "github.com/SkyAPM/go2sky/reporter/grpc/register"
+	common "github.com/DaoCloud-Labs/go2sky/reporter/grpc/common"
+	register "github.com/DaoCloud-Labs/go2sky/reporter/grpc/register"
 	gomock "github.com/golang/mock/gomock"
 	grpc "google.golang.org/grpc"
 	reflect "reflect"

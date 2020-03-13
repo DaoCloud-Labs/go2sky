@@ -6,7 +6,7 @@ package mock_language_agent_v2
 
 import (
 	context "context"
-	language_agent_v2 "github.com/SkyAPM/go2sky/reporter/grpc/language-agent-v2"
+	language_agent_v2 "github.com/DaoCloud-Labs/go2sky/reporter/grpc/language-agent-v2"
 	gomock "github.com/golang/mock/gomock"
 	grpc "google.golang.org/grpc"
 	reflect "reflect"

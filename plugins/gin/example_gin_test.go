@@ -23,9 +23,9 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/SkyAPM/go2sky"
-	h "github.com/SkyAPM/go2sky/plugins/http"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/DaoCloud-Labs/go2sky"
+	h "github.com/DaoCloud-Labs/go2sky/plugins/http"
+	"github.com/DaoCloud-Labs/go2sky/reporter"
 	"github.com/gin-gonic/gin"
 )
 

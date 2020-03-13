@@ -24,9 +24,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/propagation"
-	"github.com/SkyAPM/go2sky/reporter/grpc/common"
+	"github.com/DaoCloud-Labs/go2sky"
+	"github.com/DaoCloud-Labs/go2sky/propagation"
+	"github.com/DaoCloud-Labs/go2sky/reporter/grpc/common"
 	"github.com/gin-gonic/gin"
 )
 

@@ -22,8 +22,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/SkyAPM/go2sky"
-	"github.com/SkyAPM/go2sky/reporter"
+	"github.com/DaoCloud-Labs/go2sky"
+	"github.com/DaoCloud-Labs/go2sky/reporter"
 )
 
 func ExampleNewTracer() {
